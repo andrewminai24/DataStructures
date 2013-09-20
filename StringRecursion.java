@@ -4,6 +4,12 @@ public class StringRecursion {
 	public static void printReverse(String str){
 		if (str == null || str.length() == 0) return;
 		
+		int lnth = str.length();
+		if (lnth ==1) {System.out.print(str); return; }
+		
+		else  printReverse(str.substring(1));
+		System.out.print(str.substring(0,1));
+		
 	}
 	
 	public static String reverse(String str){
@@ -29,10 +35,10 @@ public class StringRecursion {
 	public static void main(String args[]){
 		String none = null;
 		String blank = "";
-		System.out.println(trim("    "));
+		System.out.println(trim("Hello World    "));
 		
-		System.out.println(reverse("KalpanBhatt"));
-		//printReverse("Kalpanbhatt");
+		System.out.println(reverse("H"));
+		printReverse("kalpan");
 		
 	}
 }
