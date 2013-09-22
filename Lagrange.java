@@ -58,7 +58,7 @@ public class Lagrange {
      */
     public boolean findSum(int num, int maxTerms) {
     	
-        	if ((num > 0 && maxTerms == 0) || (num == 2 && maxTerms < 2) || (num == 3 && maxTerms < 3))return false;	//Backtrack
+        	if ((num > 0 && maxTerms == 0) || (num < 4 && maxTerms < num))return false;	//Backtrack
         	
         	if (num == 0 && maxTerms >= 0) return true;		//Base case for recursion
         	
