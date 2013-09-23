@@ -13,7 +13,7 @@ import java.util.*;
 public class Lagrange {
     private int number;      // the number we are trying to break up
     private int values[] = new int[4];
-    /* Put any additional fields below. */
+
     
 
     /*
@@ -31,9 +31,7 @@ public class Lagrange {
      */
     public Lagrange(int num) {
         number = num;
-        
-        // initialize the field(s) that you add below
-        
+        values = new int[4];
     }
 
     /**
@@ -41,9 +39,11 @@ public class Lagrange {
      */
     public void printSolution() {
         System.out.print(number + " = ");
-        
-        // Complete this method below.
-        
+        for(int i = 3; i >= 0; i--){
+        	System.out.print(values[i]);
+        	if (i ==0 || values[i-1] == 0)break;
+        	System.out.print(" + ");
+        }    
     }
     
     /**
@@ -57,16 +57,24 @@ public class Lagrange {
      * uses the method.
      */
     public boolean findSum(int num, int maxTerms) {
-       
-        int terms[] = new int [maxTerms];
-    	values[0] = largestSquare(num);
-        
-    	
-    	
-        return false;      // backtrack
+    	if ((num > 0 && maxTerms == 0) || (num < 4 && maxTerms < num))return false;	//Backtrack
+        	
+        	if (num == 0 && maxTerms >= 0) return true;		//Base case for recursion
+        	
+        	values[maxTerms-1] = largestSquare(num);
+        	int tempTerms = maxTerms -1;
+        	int diff = (num - values[maxTerms-1]);
+        	
+        	while (!findSum(diff, tempTerms)){
+        		if (values[maxTerms-1] == 1) return false;				//Exhausted all available options
+        		values[maxTerms-1] = largestSquare(values[maxTerms-1]-1);
+        		diff = (num - values[maxTerms-1]);
+        		}
+        		
+        	return true;
+
     }
-    
-    /* Put any additional methods below. */
+
     
 
     public static void main(String[] args) {
@@ -81,7 +89,8 @@ public class Lagrange {
                 return;
             } else if (n <= 0)
                 continue;
-    
+            
+         //   System.out.println(largestSquare(n));
             Lagrange problem = new Lagrange(n);
             
             if (problem.findSum(n, 4)) {
@@ -89,7 +98,7 @@ public class Lagrange {
             } else {
                 System.out.println("could not find a sum for " + n);
                 System.out.println();
-            }
+             }
             System.out.println();
         }
     }

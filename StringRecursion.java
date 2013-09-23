@@ -35,10 +35,19 @@ public class StringRecursion {
 	public static void main(String args[]){
 		String none = null;
 		String blank = "";
+		System.out.println("printReverse() Method Testing--------------");
+		System.out.print("Reverse of string 'Kalpan' is: ");printReverse("Kalpan");
+		System.out.println();
+		System.out.print("Reverse of blank is: ");printReverse(blank);
+		System.out.println();
+		System.out.print("Reverse of null is: ");printReverse(none);
+		System.out.println();
+		System.out.print("Reverse of single letter string 'H' is: ");printReverse("H");
+		System.out.println();
 		System.out.println(trim("Hello World    "));
 		
 		System.out.println(reverse("H"));
-		printReverse("kalpan");
+		
 		
 	}
 }
