@@ -12,7 +12,7 @@ import java.util.*;
  */
 public class Lagrange {
     private int number;      // the number we are trying to break up
-    
+    private int values[] = new int[4];
     /* Put any additional fields below. */
     
 
@@ -57,9 +57,12 @@ public class Lagrange {
      * uses the method.
      */
     public boolean findSum(int num, int maxTerms) {
-        // Replace the line below -- which we have included
-        // to allow the code to compile -- with your implementation
-        // of the method.
+       
+        int terms[] = new int [maxTerms];
+    	values[0] = largestSquare(num);
+        
+    	
+    	
         return false;      // backtrack
     }
     
