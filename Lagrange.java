@@ -12,8 +12,8 @@ import java.util.*;
  */
 public class Lagrange {
     private int number;      // the number we are trying to break up
-    private int values[];
-    /* Put any additional fields below. */
+    private int values[] = new int[4];
+
     
 
     /*
@@ -74,6 +74,7 @@ public class Lagrange {
         		}
         		
         	return true;
+
     }
 
     
