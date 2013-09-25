@@ -171,9 +171,10 @@ public class ArrayBag implements Bag {
      * @param increment
      */
     public void increaseCapacity(int increment){
+    	//Error checking
     	if (increment < 0) throw new IllegalArgumentException("Increment must be > 0");
     	if (increment == 0) return;
-    	
+    	//temporary array to hold copy of the current Objects in Bag
     	Object[] tempItems = new Object[numItems + increment];
     	System.arraycopy(items, 0, tempItems, 0, numItems);
     	items = tempItems;
@@ -185,9 +186,10 @@ public class ArrayBag implements Bag {
      * @param other
      */
     public boolean addItems(Bag other){
+    	//Error checking
     	if (other == null) throw new IllegalArgumentException();
-    	if (other.isEmpty()) return true;
-    	if (roomLeft() < other.numItems()) return false;
+    	if (other.isEmpty()) return true;			//Passed bag is empty. So no items to add.
+    	if (roomLeft() < other.numItems()) return false;    //Not enough room to add all objects of other bag.
     	Object[] otherItems = other.toArray();
     	for(int i = 0; i<otherItems.length; i++){
     		add(otherItems[i]);
@@ -196,8 +198,8 @@ public class ArrayBag implements Bag {
     }
     
     /**
-     * 
-     * @param args
+     * intersectionWith - Returns bag with all common items of both the bags
+     * @param other
      */
     public Bag intersectionWith(Bag other){
     	if (other == null) throw new IllegalArgumentException();

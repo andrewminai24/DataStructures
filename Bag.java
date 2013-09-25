@@ -70,15 +70,14 @@ public interface Bag {
     void increaseCapacity(int increment);
     
     /**
-     * 
+     * addItmes - Adds all the items from given bag to the calling ArrayBag.
      * @param other
-     * @return
      */
     boolean addItems(Bag other);
     
     /**
-     * 
-     * @param args
+     * intersectionWith - Returns bag with all common items of both the bags
+     * @param other
      */
     Bag intersectionWith(Bag other);
 }

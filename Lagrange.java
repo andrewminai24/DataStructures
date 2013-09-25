@@ -39,7 +39,7 @@ public class Lagrange {
      */
     public void printSolution() {
         System.out.print(number + " = ");
-        for(int i = 3; i >= 0; i--){
+        for(int i = 3; i >= 0; i--){				//Printing array from right
         	System.out.print(values[i]);
         	if (i ==0 || values[i-1] == 0)break;
         	System.out.print(" + ");
@@ -57,18 +57,19 @@ public class Lagrange {
      * uses the method.
      */
     public boolean findSum(int num, int maxTerms) {
-    	
-        	if ((num > 0 && maxTerms == 0) || (num < 4 && maxTerms < num))return false;	//Backtrack
+    		//Backtrack
+        	if ((num > 0 && maxTerms == 0) || (num < 4 && maxTerms < num))return false;	// Smarter check for early backtracking
         	
         	if (num == 0 && maxTerms >= 0) return true;		//Base case for recursion
-        	
+        	//Get the largest square less than or equal to given number
         	values[maxTerms-1] = largestSquare(num);
-        	int tempTerms = maxTerms -1;
-        	int diff = (num - values[maxTerms-1]);
+        	int tempTerms = maxTerms -1;				//Reduce no of terms available
+        	int diff = (num - values[maxTerms-1]);		//Filling array from right
         	
         	while (!findSum(diff, tempTerms)){
-        		if (values[maxTerms-1] == 1) return false;				//Exhausted all available options
-        		values[maxTerms-1] = largestSquare(values[maxTerms-1]-1);
+        		if (values[maxTerms-1] == 1) return false;		//Second base case	//Exhausted all available options -- Sun cannot be found
+        		//Find next largest square of the given no.
+        		values[maxTerms-1] = largestSquare(values[maxTerms-1]-1);	// -1 will force to find next largest square
         		diff = (num - values[maxTerms-1]);
         		}
         		
@@ -90,7 +91,6 @@ public class Lagrange {
             } else if (n <= 0)
                 continue;
             
-         //   System.out.println(largestSquare(n));
             Lagrange problem = new Lagrange(n);
             
             if (problem.findSum(n, 4)) {

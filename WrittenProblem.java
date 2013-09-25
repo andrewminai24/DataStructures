@@ -48,6 +48,11 @@ public class WrittenProblem {
 			}
 			return false;
 		}
+		public static boolean recursiveSearch(int item, int[] arr, int position) {
+			if (position == arr.length) return false;
+			if (arr[position] == item) return true;
+			else return recursiveSearch(item, arr, position+1);
+		}
 		
 		public static void main(String args[]){
 			int[] list = {3,1,5,3,5};
@@ -74,7 +79,8 @@ public class WrittenProblem {
 			Lagrange b[]  = {L, M};
 			Integer d[] = {1,2,3,4,5};
 		
-			System.out.println(search(4,d));
+			System.out.println(search(10,d));
+			System.out.println(recursiveSearch(4,a,3));
 		}
 	}
 
